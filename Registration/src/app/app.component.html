@@ -1,0 +1,174 @@
+<!--The content below is only a placeholder and can be replaced.-->
+  <h1>
+    {{title}}!
+  </h1>
+  <div *ngIf='valid_reg_display' class="success_reg">
+    <p>Thank you for registering with us {{ user.first_name }}. We just sent
+      you a confirmation email at: {{ user.email }}, and we will send all mail
+      to {{ user.street_addy }}, {{ user.unit_num }}, {{ user.city }} {{ user.state }}</p>
+    <p>Have a very metal day!</p>
+  </div>
+  <div>
+  <form (submit)="onSubmit()" #userForm="ngForm" id="ngForm" name="myForm">
+    <label for="first_name">*First Name</label>
+    <input
+     type="text"
+     name="first_name"
+     id="first_name"
+     [(ngModel)]="user.first_name"
+     #first_name="ngModel"
+     required
+     minlength="2"
+     maxlength="24"
+     ><span *ngIf="first_name.errors" class='invalid'>
+       Your first name must have at least 2 characters!</span>
+      <span *ngIf="first_name.valid" class='valid'>
+        First name is valid!</span>
+    <br>
+    <label for="last_name">*Last Name</label>
+    <input
+      type="text"
+      name="last_name"
+      id="last_name"
+      [(ngModel)]="user.last_name"
+      #last_name="ngModel"
+      required
+      minlength="2"
+      maxlength="24"
+      ><span *ngIf="last_name.errors" class='invalid'>
+        Your last name must have at least 2 characters!</span>
+       <span *ngIf="last_name.valid" class='valid'>
+         Last name is valid!</span>
+    <br>
+    <label for="email">*Email</label>
+    <input
+      type="text"
+      name="email"
+      id="email"
+      [(ngModel)]="user.email"
+      #email="ngModel"
+      required
+      minlength="4"
+      maxlength="24"
+      ><span *ngIf="email.errors" class='invalid'>
+        Your email must have at least 4 characters!</span>
+       <span *ngIf="email.valid" class='valid'>
+         Last name is valid!</span>
+    <br>
+    <label for="password">*Password</label>
+    <input
+      type="text"
+      name="password"
+      id="password"
+      [(ngModel)]="user.password"
+      #password="ngModel"
+      required
+      minlength="8"
+      maxlength="24"
+      pattern="^([a-zA-Z0-9@*#]{8,15})$"
+      ><span *ngIf="password.errors" class='invalid'>
+        Your password must have at least 8 characters!</span>
+       <span *ngIf="password.valid" class='valid'>
+         password is valid!</span>
+    <br>
+    <label for="confirm_pwd">*Confirm Password</label>
+    <input
+      type="text"
+      name="confirm_pwd"
+      id="confirm_pwd"
+      [(ngModel)]="user.confirm_pwd"
+      #confirm_pwd="ngModel"
+      required
+      minlength="8"
+      maxlength="24"
+      pattern="^([a-zA-Z0-9@*#]{8,15})$"
+      ><span *ngIf="confirm_pwd.errors" class='invalid'>
+        Your password confirmation must have at least 8 characters!</span>
+       <span *ngIf="confirm_pwd.valid" class='valid'>
+         confirmation of password is valid!</span>
+    <br>
+    <label for="street_addy">*Street Address</label>
+    <input
+      type="text"
+      name="street_addy"
+      id="street_addy"
+      [(ngModel)]="user.street_addy"
+      #street_addy="ngModel"
+      required
+      minlength="8"
+      maxlength="42"
+      ><span *ngIf="street_addy.errors" class='invalid'>
+        Your street address must have at least 8 characters!</span>
+       <span *ngIf="street_addy.valid" class='valid'>
+         street address is valid!</span>
+    <br>
+    <label for="unit_num">*Unit/Apt No.</label>
+    <input
+      type="text"
+      name="unit_num"
+      id="unit_num"
+      [(ngModel)]="user.unit_num"
+      #unit_num="ngModel"
+      minlength="1"
+      maxlength="24"
+      ><span *ngIf="unit_num.errors" class='invalid'>
+        Your unit/apt number is invalid!</span>
+       <span *ngIf="confirm_pwd.valid" class='valid'>
+         unit/apt number is valid!</span>
+    <br>
+    <label for="city">*City</label>
+    <input
+      type="text"
+      name="city"
+      id="city"
+      [(ngModel)]="user.city"
+      #city="ngModel"
+      required
+      minlength="2"
+      maxlength="42"
+      ><span *ngIf="city.errors" class='invalid'>
+        Your city must have at least 2 characters!</span>
+       <span *ngIf="city.valid" class='valid'>
+         city is valid!</span>
+    <br>
+    <label for="state">*State</label>
+    <select
+      name="state"
+      id="state"
+      [(ngModel)]="user.state"
+      #state="ngModel"
+      required>
+      <option value="State"></option>
+      <option *ngFor="let state of states" [value]="state">{{state}}</option>
+    </select>
+    <span *ngIf="state.errors" class='invalid'>
+      Choose a state!</span>
+     <span *ngIf="state.valid" class='valid'>
+       State is valid!</span>
+    <br>
+    <label for="lucky">*I'm Feeling Lucky:</label>
+    <input
+      type="radio"
+      name="lucky"
+      id="lucky"
+      value="true"
+      [(ngModel)]="user.lucky"
+      #lucky="ngModel"
+      required>Yes
+    <input
+      type="radio"
+      name="lucky"
+      id="lucky"
+      value="false"
+      [(ngModel)]="user.lucky"
+      #lucky="ngModel"
+      required>No
+      <span *ngIf="lucky.errors" class='invalid'>
+        You must choose how you're feeling!</span>
+       <span *ngIf="lucky.valid" class='valid'>
+         We'll see!</span>
+    <br>
+
+   <input type=submit [disabled]="!userForm.form.valid" name=submit value="Register">
+ </form>
+</div>

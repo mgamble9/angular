@@ -1,0 +1,11 @@
+.invalid {
+  color: red;
+   }
+
+.valid {
+  color: green;
+ }
+
+div#success_reg {
+  background-color: green;
+}

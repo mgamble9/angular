@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+  <h1>
+    {{title}}!
+  </h1>
+  <br>
+  <div>
+    <div class="switch" *ngFor="let switch of button_array; let idx = index">
+      <button
+        *ngIf="switch"
+        [ngClass]="{'button_on': switch}"
+        (click)="toggleButton(idx)">ON</button>
+      <button
+        *ngIf="!switch"
+        [ngClass]="{'button_on': switch}"
+        (click)='toggleButton(idx)'>OFF</button>
+  </div>
+</div>

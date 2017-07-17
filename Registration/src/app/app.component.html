@@ -138,10 +138,10 @@
       [(ngModel)]="user.state"
       #state="ngModel"
       required>
-      <option value="State"></option>
+      <!-- <option value="State"></option> -->
       <option *ngFor="let state of states" [value]="state">{{state}}</option>
     </select>
-    <span *ngIf="state.errors" class='invalid'>
+    <span *ngIf="state.errors && !user.state" class='invalid'>
       Choose a state!</span>
      <span *ngIf="state.valid" class='valid'>
        State is valid!</span>
@@ -153,7 +153,7 @@
       id="lucky"
       value="true"
       [(ngModel)]="user.lucky"
-      #lucky="ngModel"
+      #lucky_yes="ngModel"
       required>Yes
     <input
       type="radio"
@@ -161,11 +161,11 @@
       id="lucky"
       value="false"
       [(ngModel)]="user.lucky"
-      #lucky="ngModel"
+      #lucky_no="ngModel"
       required>No
-      <span *ngIf="lucky.errors" class='invalid'>
+      <span *ngIf="lucky_no.pristine && lucky_yes.pristine" class='invalid'>
         You must choose how you're feeling!</span>
-       <span *ngIf="lucky.valid" class='valid'>
+       <span *ngIf="lucky_no.dirty || lucky_yes.dirty" class='valid'>
          We'll see!</span>
     <br>
 

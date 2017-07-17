@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'US Time Zone Display'
+  time = new Date();
+  lastTimeZoneSelected = null;
+  showTimeDisplay: boolean;
+
+  setDateByZone(timezone){
+    this.showTimeDisplay = true;
+    console.log("blah!");
+    this.time = new Date();
+    if (timezone === "MST") {
+      this.time.setHours(this.time.getHours() + 1);
+    } else if (timezone === 'CST') {
+        this.time.setHours(this.time.getHours() + 2);
+    } else if (timezone === 'EST') {
+        this.time.setHours(this.time.getHours() + 3);
+    }
+    this.lastTimeZoneSelected = timezone;
+  }
+
+  clearPage(){
+    this.lastTimeZoneSelected = null;
+    this.showTimeDisplay = false;
+  }
+}

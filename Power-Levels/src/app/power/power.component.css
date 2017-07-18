@@ -1,0 +1,12 @@
+div.container {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+}
+
+.card {
+  width: 30%;
+  background-color: gold;
+  margin: 10px 5px;
+  padding: 10px;
+}

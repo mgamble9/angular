@@ -1,0 +1,7 @@
+<div class = "container">
+<h2>List of notes:</h2>
+<div *ngIf = "note_list">
+<div class="note_list" *ngFor="let x of note_list | sortbydate: 'createdAt': '[desc]'">
+  <p>{{ x.note }} ********* <span>{{ x.createdAt | date: 'medium' }}</span></p>
+</div>
+</div>
